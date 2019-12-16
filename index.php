@@ -31,13 +31,16 @@
     <button type="submit" name="insert_submit">Insert</button>
     <br>
     <br>
-    <b> Update animal: </b>
+    <b> Update company: </b>
     <input type="text" name="update_id" placeholder="id">
-    <input type="text" name="update_name" placeholder="new animal name">
+    <input type="text" name="update_name" placeholder="company name">
+    <input type="text" name="update_address" placeholder="address">
+    <input type="text" name="update_phone" placeholder="phone number">
+    <input type="text" name="update_turnover" placeholder="turnover">
     <button type="submit" name="update_submit">Update</button>
     <br>
     <br>
-    <b> Delete animal: </b>
+    <b> Delete company: </b>
     <input type="text" name="delete_id" placeholder="id">
     <button type="submit" name="delete_submit">Delete</button>
 </form>

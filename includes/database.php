@@ -36,21 +36,26 @@ function update()
 {
     $input_id = $_POST['update_id'];
     $input_name = $_POST['update_name'];
-    $query_update = "update animals set name = '$input_name' where id = '$input_id';";
-    $query_insert = "insert into animals (name) values ('$input_name');";
+    $input_address = $_POST['update_address'];
+    $input_phone = $_POST['update_phone'];
+    $input_turnover = $_POST['update_turnover'];
+
+    $query_update = "update companies set name = '$input_name', address = '$input_address', phone_number = '$input_phone', turnover = '$input_turnover' where id = '$input_id';";
+    $query_insert = "insert into companies (name, address, phone_number, turnover)
+    values ('$input_name', '$input_address', '$input_phone', '$input_turnover')";
 
     if (pg_affected_rows(pg_query($query_update)) > 0) {
-        echo "Updated animal";
+        echo "Updated company";
     } else {
         pg_query($query_insert);
-        echo "Inserted animal";
+        echo "Inserted company";
     }
 }
 
 function delete()
 {
     $input_id = $_POST['delete_id'];
-    $query_delete = "delete from animals where id = '$input_id';";
+    $query_delete = "delete from companies where id = '$input_id';";
     $result = pg_query($query_delete) or die('Query failed: ' . pg_last_error());
 }
 
