@@ -7,7 +7,7 @@ function connectToDb()
     $dbConnection = pg_connect($conn_string) or die('Could not connect: ' . pg_last_error());
 }
 
-function showAll()
+function showAllCompanies()
 {
     $query = "SELECT * from companies ORDER BY id";
     $result = pg_query($query) or die('Query failed: ' . pg_last_error());
@@ -18,7 +18,18 @@ function showAll()
     pg_free_result($result);
 }
 
-function insert()
+function showAllAgents()
+{
+    $query = "SELECT * from agents ORDER BY id";
+    $result = pg_query($query) or die('Query failed: ' . pg_last_error());
+
+    while ($value = pg_fetch_object($result)) {
+        echo "<tr> <td>$value->id <td>$value->forname <td>$value->surname <td>$value->address <td>$value->phone_number <td>$value->turnover";
+    }
+    pg_free_result($result);
+}
+
+function insertCompany()
 {
     $input_id = $_POST['insert_id'];
     $input_name = $_POST['insert_name'];
@@ -31,6 +42,22 @@ function insert()
 
     $result = pg_query($query_insert) or die('Query failed: ' . pg_last_error());
 }
+
+function insertAgent()
+{
+    $input_id = $_POST['insert_id'];
+    $input_forname = $_POST['insert_forname'];
+    $input_surname = $_POST['insert_surname'];
+    $input_address = $_POST['insert_address'];
+    $input_phone = $_POST['insert_phone'];
+    $input_turnover = $_POST['insert_turnover'];
+
+    $query_insert = "insert into agents (forname, surname, address, phone_number, turnover)
+    values ('$input_forname', '$input_surname', '$input_address', '$input_phone', '$input_turnover')";
+
+    $result = pg_query($query_insert) or die('Query failed: ' . pg_last_error());
+}
+
 
 function update()
 {
@@ -63,20 +90,26 @@ function delete()
 connectToDb();
 
 if (isset($_POST['insert_submit'])) {
-    insert();
-    showAll();
+    insertCompany();
+    showAllCompanies();
     header("Location: ../index.php?insert=success");
 }
 
 if (isset($_POST['update_submit'])) {
     update();
-    showAll();
+    showAllCompanies();
     header("Location: ../index.php?update=success");
 }
 
 if (isset($_POST['delete_submit'])) {
     delete();
-    showAll();
+    showAllCompanies();
     header("Location: ../index.php?delete=success");
+}
+
+if (isset($_POST['insert_submitAgent'])) {
+    insertAgent();
+    showAllAgents();
+    header("Location: ../agents.php?insert=success");
 }
 
