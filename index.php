@@ -9,7 +9,7 @@
 
 <div id="button"><a href="agents.php">Go to agents</a></div>
 <div id="button"><a href="companies.php">Go to companies</a></div>
-<div id="button"><a href="agents.php">Go to estates</a></div>
+<div id="button"><a href="buildings.php">Go to buildings</a></div>
 
 </body>
 

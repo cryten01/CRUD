@@ -28,7 +28,7 @@
     <input type="text" name="insert_address" placeholder="address">
     <input type="text" name="insert_phone" placeholder="phone number">
     <input type="text" name="insert_turnover" placeholder="turnover">
-    <button type="submit" name="insert_submitAgent">Insert</button>
+    <button type="submit" name="insert_submitCompany">Insert</button>
     <br>
     <br>
     <b> Update company: </b>
@@ -37,12 +37,12 @@
     <input type="text" name="update_address" placeholder="address">
     <input type="text" name="update_phone" placeholder="phone number">
     <input type="text" name="update_turnover" placeholder="turnover">
-    <button type="submit" name="update_submit">Update</button>
+    <button type="submit" name="update_submitCompany">Update</button>
     <br>
     <br>
     <b> Delete company: </b>
     <input type="text" name="delete_id" placeholder="id">
-    <button type="submit" name="delete_submit">Delete</button>
+    <button type="submit" name="delete_submitCompany">Delete</button>
 </form>
 
 <div id="button"><a href="index.php">Go back to index page</a></div>
