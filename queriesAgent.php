@@ -9,9 +9,10 @@ function insertAgent()
     $input_place = $_POST['insert_place'];
     $input_phone = $_POST['insert_phone'];
     $input_turnover = $_POST['insert_turnover'];
+    $input_comp_id = $_POST['insert_comp_id'];
 
-    $query_insert = "insert into agents (forname, surname, street, zipcode, place, phone_number, turnover)
-    values ('$input_forname', '$input_surname', '$input_street', '$input_zipcode','$input_place', '$input_phone', '$input_turnover')";
+    $query_insert = "insert into agents (forname, surname, street, zipcode, place, phone_number, turnover, comp_id)
+    values ('$input_forname', '$input_surname', '$input_street', '$input_zipcode','$input_place', '$input_phone', '$input_turnover', '$input_comp_id')";
 
     $result = pg_query($query_insert) or die('Query failed: ' . pg_last_error());
 }
@@ -26,21 +27,32 @@ function updateAgent()
     $input_place = $_POST['update_place'];
     $input_phone = $_POST['update_phone'];
     $input_turnover = $_POST['update_turnover'];
+    $input_comp_id = $_POST['update_comp_id'];
 
     $query_update = "update agents set 
-        forname = '$input_forname', 
+        forname = '$input_forname' 
         surname = '$input_surname', 
         street = '$input_street', 
         zipcode = '$input_zipcode', 
         place = '$input_place', 
         phone_number = '$input_phone', 
-        turnover = '$input_turnover' 
+        turnover = '$input_turnover',
+        comp_id = '$input_comp_id' 
     where id = '$input_id';";
 
-    $query_insert = "insert into agents (forname, surname, street, zipcode, place, phone_number, turnover)
-    values ('$input_forname', '$input_surname', '$input_street', '$input_zipcode','$input_place', '$input_phone', '$input_turnover')";
+    // Strings only
+    $query_fix = "update agents set 
+        forname = '$input_forname', 
+        surname = '$input_surname', 
+        street = '$input_street',
+        place = '$input_place',
+        phone_number = '$input_phone'
+    where id = '$input_id'";
 
-    if (pg_affected_rows(pg_query($query_update)) > 0) {
+    $query_insert = "insert into agents (forname, surname, street, zipcode, place, phone_number, turnover, comp_id)
+    values ('$input_forname', '$input_surname', '$input_street', '$input_zipcode','$input_place', '$input_phone', $input_turnover', '$input_comp_id')";
+
+    if (pg_affected_rows(pg_query($query_fix)) > 0) {
         echo "Updated company";
     } else {
         pg_query($query_insert);
@@ -62,7 +74,8 @@ function showAllAgents()
               <td>$value->zipcode 
               <td>$value->place 
               <td>$value->phone_number 
-              <td>$value->turnover";
+              <td>$value->turnover
+              <td>$value->comp_id";
     }
     pg_free_result($result);
 }

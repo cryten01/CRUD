@@ -36,10 +36,17 @@ function updateBuilding()
         status = '$input_status', 
         type = '$input_type'     
     where id = '$input_id';";
+
+    // Strings only
+    $query_fix = "update buildings set 
+        street = '$input_street', 
+        place = '$input_place'   
+    where id = '$input_id';";
+
     $query_insert = "insert into buildings (price, street, zipcode, place, size, status, building_type)
     values ('$input_price', '$input_street', '$input_zipcode','$input_place', '$input_size', '$input_status', '$input_type')";
 
-    if (pg_affected_rows(pg_query($query_update)) > 0) {
+    if (pg_affected_rows(pg_query($query_fix)) > 0) {
         echo "Updated building";
     } else {
         pg_query($query_insert);
