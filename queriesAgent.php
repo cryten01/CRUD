@@ -46,7 +46,9 @@ function updateAgent()
         surname = '$input_surname', 
         street = '$input_street',
         place = '$input_place',
-        phone_number = '$input_phone'
+        phone_number = '$input_phone',
+        turnover = 10000,
+        zipcode = 1010
     where id = '$input_id'";
 
     $query_insert = "insert into agents (forname, surname, street, zipcode, place, phone_number, turnover, comp_id)

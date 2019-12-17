@@ -39,7 +39,9 @@ function updateCompany()
         name = '$input_name', 
         street = '$input_street', 
         place = '$input_place',
-        phone_number = '$input_phone'
+        phone_number = '$input_phone',
+        turnover = 10000,
+        zipcode = 1010
     where id = '$input_id';";
 
     $query_insert = "insert into companies (name, street, zipcode, place, phone_number, turnover)

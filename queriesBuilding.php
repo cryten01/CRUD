@@ -40,7 +40,10 @@ function updateBuilding()
     // Strings only
     $query_fix = "update buildings set 
         street = '$input_street', 
-        place = '$input_place'   
+        place = '$input_place',
+        price = 1200,
+        zipcode = 1010,
+        size = 100     
     where id = '$input_id';";
 
     $query_insert = "insert into buildings (price, street, zipcode, place, size, status, building_type)
