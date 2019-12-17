@@ -27,7 +27,16 @@ function updateAgent()
     $input_phone = $_POST['update_phone'];
     $input_turnover = $_POST['update_turnover'];
 
-    $query_update = "update agents set forname = '$input_forname', surname = '$input_surname', street = '$input_street', zipcode = '$input_zipcode', place = '$input_place', phone_number = '$input_phone', turnover = '$input_turnover' where id = '$input_id';";
+    $query_update = "update agents set 
+        forname = '$input_forname', 
+        surname = '$input_surname', 
+        street = '$input_street', 
+        zipcode = '$input_zipcode', 
+        place = '$input_place', 
+        phone_number = '$input_phone', 
+        turnover = '$input_turnover' 
+    where id = '$input_id';";
+
     $query_insert = "insert into agents (forname, surname, street, zipcode, place, phone_number, turnover)
     values ('$input_forname', '$input_surname', '$input_street', '$input_zipcode','$input_place', '$input_phone', '$input_turnover')";
 

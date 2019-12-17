@@ -13,7 +13,7 @@
     <?php showAllCompanies() ?>
 </table>
 
-<form action="includes/post.php" method="post">
+<form action="post.php" method="post">
     <h4> Insert company: </h4>
     <input type="text" name="insert_name" placeholder="company name">
     <input type="text" name="insert_street" placeholder="street">

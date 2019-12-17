@@ -14,7 +14,7 @@
         <?php showAllBuildings(); ?>
 </table>
 
-<form action="includes/post.php" method="post">
+<form action="post.php" method="post">
     <h4> Insert building: </h4>
     <select type="text" name="insert_type">
         <option value="land">land</option>

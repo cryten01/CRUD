@@ -11,14 +11,12 @@
     <?php showAgentsWithCompany(); ?>
 </table>
 
-<form action="includes/post.php" method="post">
-    <select type="text" name="select_company">
-        <?php getAllCompanies(); ?>
-    </select>
-    <input type="submit" name="submit_go" value="Go"/>
-</form>
-
-<h2>Responsible agents for listed buildings (Many to many relation)</h2>
+<!--<form action="includes/post.php" method="post">-->
+<!--    <select type="text" name="select_company">-->
+<!--        --><?php //getAllCompanies(); ?>
+<!--    </select>-->
+<!--    <input type="submit" name="submit_go" value="Go"/>-->
+<!--</form>-->
 
 <?php include "./footerIndex.html" ?>
 

@@ -14,7 +14,7 @@
     <?php showAllAgents(); ?>
 </table>
 
-<form action="includes/post.php" method="post">
+<form action="post.php" method="post">
     <h4> Insert agent: </h4>
     <input type="text" name="insert_forname" placeholder="agent forname">
     <input type="text" name="insert_surname" placeholder="agent surname">
