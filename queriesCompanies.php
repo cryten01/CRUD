@@ -20,10 +20,10 @@ function updateCompany()
     $input_id = $_POST['update_id'];
     $input_name = $_POST['update_name'];
     $input_street = $_POST['update_street'];
-    $input_zipcode = $_POST['upate_zipcode'];
+    $input_zipcode = (int) $_POST['update_zipcode'];
     $input_place = $_POST['update_place'];
     $input_phone = $_POST['update_phone'];
-    $input_turnover = $_POST['update_turnover'];
+    $input_turnover = (int) $_POST['update_turnover'];
 
     $query_update = "update companies set 
         name = '$input_name', 
@@ -34,20 +34,10 @@ function updateCompany()
         turnover = '$input_turnover' 
     where id = '$input_id';";
 
-    // Strings only
-    $query_fix = "update companies set 
-        name = '$input_name', 
-        street = '$input_street', 
-        place = '$input_place',
-        phone_number = '$input_phone',
-        turnover = 10000,
-        zipcode = 1010
-    where id = '$input_id';";
-
     $query_insert = "insert into companies (name, street, zipcode, place, phone_number, turnover)
     values ('$input_name', '$input_street', '$input_zipcode','$input_place', '$input_phone', '$input_turnover')";
 
-    if (pg_affected_rows(pg_query($query_fix)) > 0) {
+    if (pg_affected_rows(pg_query($query_update)) > 0) {
         echo "Updated company";
     } else {
         pg_query($query_insert);
