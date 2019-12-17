@@ -40,13 +40,10 @@ function getAllCompanies()
     $query = "SELECT name from companies ORDER BY id";
     $result = pg_query($query) or die('Query failed: ' . pg_last_error());
 
-    echo '<select name="select_company">';
-
     while ($value = pg_fetch_object($result)) {
         echo '<option>' . $value->name . '</option>';
     }
 
-    echo '</select>';
     pg_free_result($result);
 }
 

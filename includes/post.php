@@ -67,7 +67,6 @@ if (isset($_POST['delete_submitBuilding'])) {
 
 
 if (isset($_POST['select_company'])) {
-    showAllAgents();
-    showAgentsWithCompaniesAndName('');
-    header("Location: ../index.php?select=success");
+        header("Location: ../index.php?select=success");
+    showAgentsWithCompaniesAndName($_POST['select_company']);
 }

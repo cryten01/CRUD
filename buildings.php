@@ -5,36 +5,52 @@
     <tr>
         <th>ID</th>
         <th>Price</th>
-        <th>Type</th>
+        <th>Street</th>
+        <th>Zipcode</th>
+        <th>Place</th>
         <th>Size</th>
-        <th>Address</th>
         <th>Status</th>
+        <th>Type</th>
         <?php showAllBuildings(); ?>
 </table>
 
 <form action="includes/post.php" method="post">
-    <br>
-    <br>
-    <b> Insert building: </b>
-    <input type="text" name="insert_type" placeholder="type">
+    <h4> Insert building: </h4>
+    <select type="text" name="insert_type">
+        <option value="land">land</option>
+        <option value="house">house</option>
+        <option value="flat">flat</option>
+    </select>
     <input type="text" name="insert_size" placeholder="size">
     <input type="text" name="insert_price" placeholder="price">
-    <input type="text" name="insert_address" placeholder="address">
-    <input type="text" name="insert_status" placeholder="status">
+    <input type="text" name="insert_street" placeholder="street">
+    <input type="text" name="insert_zipcode" placeholder="zipcode">
+    <input type="text" name="insert_place" placeholder="place">
+    <select type="text" name="insert_status">
+        <option value="active">active</option>
+        <option value="inactive">inactive</option>
+    </select>
     <button type="submit" name="insert_submitBuilding">Insert</button>
-    <br>
-    <br>
-    <b> Update building: </b>
+
+    <h4> Update building: </h4>
     <input type="text" name="update_id" placeholder="id">
-    <input type="text" name="update_type" placeholder="type">
+    <select type="text" name="update_type">
+        <option value="land">land</option>
+        <option value="house">house</option>
+        <option value="flat">flat</option>
+    </select>
     <input type="text" name="update_size" placeholder="size">
     <input type="text" name="update_price" placeholder="price">
-    <input type="text" name="update_address" placeholder="address">
-    <input type="text" name="update_status" placeholder="status">
+    <input type="text" name="update_street" placeholder="street">
+    <input type="text" name="update_zipcode" placeholder="zipcode">
+    <input type="text" name="update_place" placeholder="place">
+    <select type="text" name="update_status">
+        <option value="active">active</option>
+        <option value="inactive">inactive</option>
+    </select>
     <button type="submit" name="update_submitBuilding">Update</button>
-    <br>
-    <br>
-    <b> Delete building: </b>
+
+    <h4> Delete building: </h4>
     <input type="text" name="delete_id" placeholder="id">
     <button type="submit" name="delete_submitBuilding">Delete</button>
 </form>
