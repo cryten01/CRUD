@@ -55,4 +55,4 @@
     <button type="submit" name="delete_submitBuilding">Delete</button>
 </form>
 
-<?php include "./footerDB.html" ?>
+<?php include "./footer.html" ?>

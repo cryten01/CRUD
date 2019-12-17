@@ -36,4 +36,4 @@
     <button type="submit" name="delete_submitCompany">Delete</button>
 </form>
 
-<?php include "./footerDB.html" ?>
+<?php include "./footer.html" ?>

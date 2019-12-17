@@ -39,4 +39,4 @@
     <button type="submit" name="delete_submitAgent">Delete</button>
 </form>
 
-<?php include "./footerDB.html" ?>
+<?php include "./footer.html" ?>
