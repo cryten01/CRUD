@@ -1,13 +1,4 @@
-<!Doctype html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title> Real estate database </title>
-</head>
-
-<body>
-
-<?php include_once 'includes/database.php'; ?>
+<?php include "./header.html" ?>
 
 <h2>Agents</h2>
 <table>
@@ -48,7 +39,4 @@
     <button type="submit" name="delete_submitAgent">Delete</button>
 </form>
 
-<div id="button"><a href="index.php">Go back to index page</a></div>
-
-</body>
-</html>
+<?php include "./footerDB.html" ?>

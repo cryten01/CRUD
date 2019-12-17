@@ -1,18 +1,24 @@
-<!Doctype html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title> Real estate database </title>
-</head>
+<?php include "./header.html" ?>
 
-<body>
+<h2>Agents in company mcKnitel (One to many relation)</h2>
 
-<div id="button"><a href="agents.php">Go to agents</a></div>
-<div id="button"><a href="companies.php">Go to companies</a></div>
-<div id="button"><a href="buildings.php">Go to buildings</a></div>
+<table>
+    <tr>
+        <th>Forname</th>
+        <th>Surname</th>
+        <th>Turnover</th>
+        <th>Name</th>
+    <?php showAgentsWithCompany(); ?>
+</table>
 
-</body>
+<form action="includes/database.php" method="post">
+    <?php getAllCompanies(); ?>
+    <input type="submit" name="submit" value="Go"/>
+</form>
 
-</html>
+<h2>Responsible agents for listed buildings (Many to many relation)</h2>
+
+<?php include "./footerIndex.html" ?>
+
 
 

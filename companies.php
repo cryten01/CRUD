@@ -1,13 +1,4 @@
-<!Doctype html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title> Real estate database </title>
-</head>
-
-<body>
-
-<?php include_once 'includes/database.php'; ?>
+<?php include "./header.html" ?>
 
 <h2>Companies</h2>
 <table>
@@ -17,7 +8,7 @@
         <th>Address</th>
         <th>Phone number</th>
         <th>Turnover</th>
-        <?php showAllCompanies() ?>
+    <?php showAllCompanies() ?>
 </table>
 
 <form action="includes/database.php" method="post">
@@ -45,8 +36,4 @@
     <button type="submit" name="delete_submitCompany">Delete</button>
 </form>
 
-<div id="button"><a href="index.php">Go back to index page</a></div>
-
-</body>
-
-</html>
+<?php include "./footerDB.html" ?>

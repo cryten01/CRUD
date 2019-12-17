@@ -7,6 +7,51 @@ function connectToDb()
     $dbConnection = pg_connect($conn_string) or die('Could not connect: ' . pg_last_error());
 }
 
+
+function showAgentsWithCompany()
+{
+    $query = "SELECT agents.forname, agents.surname, agents.turnover, companies.name
+    FROM agents
+    INNER JOIN companies ON agents.comp_id = companies.id";
+
+    $result = pg_query($query) or die('Query failed: ' . pg_last_error());
+
+    while ($value = pg_fetch_object($result)) {
+        echo "<tr> <td>$value->forname <td>$value->surname <td>$value->turnover <td>$value->name";
+    }
+    pg_free_result($result);
+}
+
+function showAgentsWithCompaniesAndName($name)
+{
+    $query = "SELECT agents.forname, agents.surname, agents.turnover, companies.name
+    FROM agents
+    INNER JOIN companies ON agents.comp_id = companies.id
+    WHERE companies.name = '$name';";
+
+    $result = pg_query($query) or die('Query failed: ' . pg_last_error());
+
+    while ($value = pg_fetch_object($result)) {
+        echo "<tr> <td>$value->forname <td>$value->surname <td>$value->turnover <td>$value->name";
+    }
+    pg_free_result($result);
+}
+
+function getAllCompanies()
+{
+    $query = "SELECT name from companies ORDER BY id";
+    $result = pg_query($query) or die('Query failed: ' . pg_last_error());
+
+    echo '<select name="select_company">';
+
+    while ($value = pg_fetch_object($result)) {
+        echo '<option>' . $value->name . '</option>';
+    }
+
+    echo '</select>';
+    pg_free_result($result);
+}
+
 function showAllCompanies()
 {
     $query = "SELECT * from companies ORDER BY id";
@@ -43,7 +88,6 @@ function showAllBuildings()
 
 function insertCompany()
 {
-    $input_id = $_POST['insert_id'];
     $input_name = $_POST['insert_name'];
     $input_address = $_POST['insert_address'];
     $input_phone = $_POST['insert_phone'];
@@ -57,7 +101,6 @@ function insertCompany()
 
 function insertAgent()
 {
-    $input_id = $_POST['insert_id'];
     $input_forname = $_POST['insert_forname'];
     $input_surname = $_POST['insert_surname'];
     $input_address = $_POST['insert_address'];
@@ -72,7 +115,6 @@ function insertAgent()
 
 function insertBuilding()
 {
-    $input_id = $_POST['insert_id'];
     $input_price = $_POST['insert_price'];
     $input_address = $_POST['insert_address'];
     $input_size = $_POST['insert_size'];
@@ -84,8 +126,6 @@ function insertBuilding()
 
     $result = pg_query($query_insert) or die('Query failed: ' . pg_last_error());
 }
-
-
 
 
 function updateCompany()
@@ -177,7 +217,6 @@ function deleteAgent()
 connectToDb();
 
 
-
 if (isset($_POST['insert_submitCompany'])) {
     insertCompany();
     showAllCompanies();
@@ -195,7 +234,6 @@ if (isset($_POST['insert_submitBuilding'])) {
     showAllBuildings();
     header("Location: ../buildings.php?insert=success");
 }
-
 
 
 if (isset($_POST['update_submitCompany'])) {
@@ -217,8 +255,6 @@ if (isset($_POST['update_submitBuilding'])) {
 }
 
 
-
-
 if (isset($_POST['delete_submitCompany'])) {
     deleteCompany();
     showAllCompanies();
@@ -237,5 +273,10 @@ if (isset($_POST['delete_submitAgent'])) {
     header("Location: ../agents.php?delete=success");
 }
 
+if (isset($_POST['select_company'])) {
+    showAllAgents();
+    showAgentsWithCompaniesAndName('');
+    header("Location: ../index.php?select=success");
+}
 
 
