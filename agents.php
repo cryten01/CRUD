@@ -31,9 +31,9 @@
     <input type="text" name="update_forname" placeholder="agent forname">
     <input type="text" name="update_surname" placeholder="agent surname">
     <input type="text" name="update_street" placeholder="street">
-    <input type="text" name="update_zipcode" placeholder="zipcode">
     <input type="text" name="update_place" placeholder="place">
     <input type="text" name="update_phone" placeholder="phone number">
+    <input type="text" name="update_zipcode" placeholder="zipcode">
     <input type="text" name="update_turnover" placeholder="turnover">
     <input type="text" name="update_comp_id" placeholder="company id">
     <button type="submit" name="update_submitAgent">Update</button>
