@@ -19,37 +19,28 @@ function insertBuilding()
 function updateBuilding()
 {
     $input_id = $_POST['update_id'];
-    $input_price = $_POST['update_price'];
+    $input_price = (int) $_POST['update_price'];
     $input_street = $_POST['update_street'];
-    $input_zipcode = $_POST['upate_zipcode'];
+    $input_zipcode = (int) $_POST['update_zipcode'];
     $input_place = $_POST['update_place'];
-    $input_size = $_POST['update_size'];
+    $input_size = (int) $_POST['update_size'];
     $input_status = $_POST['update_status'];
     $input_type = $_POST['update_type'];
 
     $query_update = "update buildings set 
-        price = '$input_price', 
+        price = $input_price, 
         street = '$input_street', 
-        zipcode = '$input_zipcode', 
+        zipcode = $input_zipcode, 
         place = '$input_place', 
-        size = '$input_size', 
-        status = '$input_status', 
-        type = '$input_type'     
-    where id = '$input_id';";
-
-    // Strings only
-    $query_fix = "update buildings set 
-        street = '$input_street', 
-        place = '$input_place',
-        price = 1200,
-        zipcode = 1010,
-        size = 100     
+        size = $input_size,
+        status = '$input_status',
+        building_type = '$input_type'   
     where id = '$input_id';";
 
     $query_insert = "insert into buildings (price, street, zipcode, place, size, status, building_type)
     values ('$input_price', '$input_street', '$input_zipcode','$input_place', '$input_size', '$input_status', '$input_type')";
 
-    if (pg_affected_rows(pg_query($query_fix)) > 0) {
+    if (pg_affected_rows(pg_query($query_update)) > 0) {
         echo "Updated building";
     } else {
         pg_query($query_insert);
