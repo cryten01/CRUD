@@ -11,7 +11,7 @@
     <?php showAgentsWithCompany(); ?>
 </table>
 
-<form action="includes/database.php" method="post">
+<form action="includes/post.php" method="post">
     <?php getAllCompanies(); ?>
     <input type="submit" name="submit" value="Go"/>
 </form>

@@ -12,7 +12,7 @@
         <?php showAllBuildings(); ?>
 </table>
 
-<form action="includes/database.php" method="post">
+<form action="includes/post.php" method="post">
     <br>
     <br>
     <b> Insert building: </b>
